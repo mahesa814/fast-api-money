@@ -50,7 +50,7 @@ async def get_money(created_at: str = Query(...)):
         # Fetch documents
         docs = query.get()
         
-        in_money_query = money.where('is_out_money', '==', 1)
+        in_money_query = query.where('is_out_money', '==', 1)
         in_money_docs = in_money_query.stream()
         in_money_sum = tuple(doc.get('amount') for doc in in_money_docs)
         
